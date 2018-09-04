@@ -1,0 +1,3 @@
+﻿  SortController.c
+c:\users\nhirai\source\repos\grade-management\sortcontroller.c(19): warning C4716: 'SortController': 値を返さなければいけません
+  CompletionAssignment_CL82.vcxproj -> C:\Users\nhirai\source\repos\Grade-Management\Debug\CompletionAssignment_CL82.exe

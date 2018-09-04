@@ -115,7 +115,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source.c" />
+    <ClCompile Include="BubleSort.c" />
+    <ClCompile Include="Main.c" />
+    <ClCompile Include="StructSortFormatter.c" />
+    <ClCompile Include="SortController.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BubleSort.h" />
+    <ClInclude Include="SortController.h" />
+    <ClInclude Include="SortFormatter.h" />
+    <ClInclude Include="StudentScore.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
