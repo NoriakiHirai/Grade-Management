@@ -27,6 +27,18 @@
     <ClInclude Include="SortFormatter.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Error.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GradeReader.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GradeWriter.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.c">
@@ -38,7 +50,16 @@
     <ClCompile Include="SortController.c">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="StructSortFormatter.c">
+    <ClCompile Include="SortFormatter.c">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Display.c">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GradeWriter.c">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GradeReader.c">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

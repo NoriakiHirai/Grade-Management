@@ -13,30 +13,48 @@
 /* インクルード宣言															  */
 /* -------------------------------------------------------------------------- */
 #include<stdio.h>
+#include<stdlib.h>
 
 #include"StudentScore.h"
 #include"BubleSort.h"
+#include"SortController.h"
+#include"SortFormatter.h"
+#include"Error.h"
 
 /* -------------------------------------------------------------------------- */
 /* プロトタイプ宣言															  */
 /* -------------------------------------------------------------------------- */
-/* 合計点を降順にソート */
-studentScore *sortTotalScoreByDesc(studentScore *list);
-/* 教科を指定して、得点の昇順にソート */
-studentScore *sortSubjectScoreByAsc(enum Subject subject, studentScore *list);
+/**
+ * 終了処理
+ *	エラー構造体を確認し、メッセージを出力する
+ */
+void finalize(void);
 
+/* -------------------------------------------------------------------------- */
+/* 処理部																	  */
+/* -------------------------------------------------------------------------- */
 int main(void)
 {
-	// 学籍番号と5教科分の得点を入力する
-
-
-	// 合計得点の高い順にソート
 	
-	// 各教科ごとの得点の低い順にソート
+	// 合計得点の高い順にソート
+	SortController(BUBLESORT_BY_ASC, ALL);
+	
+	//// 各教科ごとの得点の低い順にソート
+	//SortController(BUBLESORT_BY_DESC, ENGLISH);
+	//SortController(BUBLESORT_BY_DESC, MATH);
+	//SortController(BUBLESORT_BY_DESC, LANGUAGE);
+	//SortController(BUBLESORT_BY_DESC, SCIENCE);
+	//SortController(BUBLESORT_BY_DESC, SOCIETY);
 
-	// ソート結果を画面に表示
+	//// 終了処理
+	//finalize();
 
-	// ソート結果をCSV形式でファイルに出力
+	exit(EXIT_SUCCESS);
+}
 
-	return 0;
+void finalize()
+{
+	// エラー構造体を確認し、メッセージを出力する
+
+	return;
 }

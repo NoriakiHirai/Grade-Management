@@ -17,6 +17,18 @@
 /* -------------------------------------------------------------------------- */
 /* プロトタイプ宣言															  */
 /* -------------------------------------------------------------------------- */
+/**
+ * 昇順バブルソート
+ *
+ * 引数：studentScore...成績構造体
+ */
 studentScore *BubleSortByAsc(studentScore *studentScore);
+
+/**
+ * 降順バブルソート
+ *
+ * 引数：studentScore...成績構造体
+ */
+studentScore *BubleSortByDesc(studentScore *studentScore);
 
 #endif // _BUBLESORT_H_

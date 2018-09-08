@@ -1,3 +1,13 @@
-﻿  SortController.c
-c:\users\nhirai\source\repos\grade-management\sortcontroller.c(19): warning C4716: 'SortController': 値を返さなければいけません
-  CompletionAssignment_CL82.vcxproj -> C:\Users\nhirai\source\repos\Grade-Management\Debug\CompletionAssignment_CL82.exe
+﻿  BubleSort.c
+c:\users\nhirai\source\repos\grade-management\bublesort.c(60): error C2084: 関数 'studentScore *BubleSortByAsc(studentScore *)' は既に本体を持っています。
+  c:\users\nhirai\source\repos\grade-management\bublesort.c(21): note: 'BubleSortByAsc' の以前の定義を確認してください
+  Main.c
+  SortController.c
+c:\users\nhirai\source\repos\grade-management\sortcontroller.c(23): error C2143: 構文エラー: '{' が '*' の前にありません。
+c:\users\nhirai\source\repos\grade-management\sortcontroller.c(23): error C2371: 'SortController': 再定義されています。異なる基本型です。
+  c:\users\nhirai\source\repos\grade-management\sortcontroller.h(32): note: 'SortController' の宣言を確認してください
+c:\users\nhirai\source\repos\grade-management\sortcontroller.c(32): warning C4033: 'SortController' : 関数には戻り値が必要です。
+c:\users\nhirai\source\repos\grade-management\sortcontroller.c(60): warning C4033: 'SortController' : 関数には戻り値が必要です。
+c:\users\nhirai\source\repos\grade-management\sortcontroller.c(76): warning C4033: 'SortController' : 関数には戻り値が必要です。
+  コードを生成中...
+c:\users\nhirai\source\repos\grade-management\main.c(56): error C4700: 初期化されていないローカル変数 'studentScore' が使用されます

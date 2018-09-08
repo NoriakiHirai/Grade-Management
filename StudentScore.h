@@ -12,7 +12,7 @@
  /* óÒãìå^êÈåæ															  */
  /* -------------------------------------------------------------------------- */
 enum Subject {
-	ENGLISH, LANGUAGE, MATH, SCIENCE, SOCIETY, TOTAL
+	ENGLISH, LANGUAGE, MATH, SCIENCE, SOCIETY, ALL
 };
 
 /* -------------------------------------------------------------------------- */
@@ -21,9 +21,10 @@ enum Subject {
 typedef struct studentScore_list {
 	int id;
 	char name[20];
-	int english, language, math, science, society, totalScore;
+	int tokuten[ALL];
+	int total;
 	int sortKey;
-	struct score *next;
+	struct studentScore_list *next;
 } studentScore;
 
 #endif // _STUDENTSCORE_H_

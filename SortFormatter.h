@@ -15,6 +15,12 @@
 /* -------------------------------------------------------------------------- */
 /* プロトタイプ宣言															  */
 /* -------------------------------------------------------------------------- */
+/**
+ * ソートフォーマッタ
+ *
+ * 引数：studentScore...成績構造体
+ *		sortKey...ソートキー(教科、列挙型変数)
+ */
 studentScore *ScoreSortFormatter(studentScore *studentScore, enum Subject sortKey);
 
 #endif // _SORTFORMATTER_H_
