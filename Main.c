@@ -35,7 +35,6 @@ void finalize(void);
 /* -------------------------------------------------------------------------- */
 int main(void)
 {
-	
 	// 合計得点の高い順にソート
 	SortController(BUBLESORT_BY_ASC, ALL);
 	
@@ -47,7 +46,7 @@ int main(void)
 	//SortController(BUBLESORT_BY_DESC, SOCIETY);
 
 	//// 終了処理
-	//finalize();
+	finalize();
 
 	exit(EXIT_SUCCESS);
 }

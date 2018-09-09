@@ -56,7 +56,7 @@ studentScore *BubleSortByAsc(studentScore *studentScore)
 	return studentScore;
 }
 
-studentScore *BubleSortByAsc(studentScore *studentScore)
+studentScore *BubleSortByDesc(studentScore *studentScore)
 {
 	int dirty;
 	/* validation */

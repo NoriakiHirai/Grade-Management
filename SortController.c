@@ -44,64 +44,56 @@ void displayScore(studentScore *studentScore, enum Subject subject);
 /* 処理部																	  */
 /* -------------------------------------------------------------------------- */
 /* SortController */
-void *SortController(enum SortLogic sortLogic, studentScore *studentScore, enum Subject sortKey)
+void SortController(enum SortLogic sortLogic, enum Subject sortKey)
 {
 	int errCode;
-	/* validation */
-	// 必須項目チェック
-	if (studentScore == NULL) {
-		errCode = XXX_NULL_PARAMETER;
-		e_pt->errorCode = errCode;
-		e_pt->errorMesage[0] = "Parameter contains NULLs.";
-		return;
-	}
-
+	
 	// 学籍番号と5教科分の得点を入力する
-	studentScore = readGrade(studentScore);
+	studentGrade = readGrade();
 
-	// ソートキーを設定する
-	switch (sortKey)
-	{
-	case ENGLISH:
-		studentScore = ScoreSortFormatter(studentScore, ENGLISH);
-		break;
-	case LANGUAGE:
-		studentScore = ScoreSortFormatter(studentScore, LANGUAGE);
-		break;
-	case MATH:
-		studentScore = ScoreSortFormatter(studentScore, MATH);
-		break;
-	case SCIENCE:
-		studentScore = ScoreSortFormatter(studentScore, SCIENCE);
-		break;
-	case SOCIETY:
-		studentScore = ScoreSortFormatter(studentScore, SOCIETY);
-		break;
-	case ALL:
-		studentScore = ScoreSortFormatter(studentScore, ALL);
-		break;
-	default:
-		errCode = XXX_INVALID_PARAMETER;
-		e_pt->errorCode = errCode;
-		e_pt->errorMesage[0] = "Selected sortKey is invalid.";
-		return;
-	}
+	//// ソートキーを設定する
+	//switch (sortKey)
+	//{
+	//case ENGLISH:
+	//	studentScore = ScoreSortFormatter(studentScore, ENGLISH);
+	//	break;
+	//case LANGUAGE:
+	//	studentScore = ScoreSortFormatter(studentScore, LANGUAGE);
+	//	break;
+	//case MATH:
+	//	studentScore = ScoreSortFormatter(studentScore, MATH);
+	//	break;
+	//case SCIENCE:
+	//	studentScore = ScoreSortFormatter(studentScore, SCIENCE);
+	//	break;
+	//case SOCIETY:
+	//	studentScore = ScoreSortFormatter(studentScore, SOCIETY);
+	//	break;
+	//case ALL:
+	//	studentScore = ScoreSortFormatter(studentScore, ALL);
+	//	break;
+	//default:
+	//	errCode = XXX_INVALID_PARAMETER;
+	//	e_pt->errorCode = errCode;
+	//	e_pt->errorMesage[0] = "Selected sortKey is invalid.";
+	//	return;
+	//}
 
-	// ソート実行
-	switch (sortLogic)
-	{
-	case BUBLESORT_BY_ASC:
-		studentScore = BubleSortByAsc(studentScore);
-		break;
-	case BUBLESORT_BY_DESC:
-		studentScore = BubleSortByDesc(studentScore);
-		break;
-	default:
-		errCode = XXX_INVALID_PARAMETER;
-		e_pt->errorCode = errCode;
-		e_pt->errorMesage[0] = "Selected sortLogic is invalid.";
-		return;
-	}
+	//// ソート実行
+	//switch (sortLogic)
+	//{
+	//case BUBLESORT_BY_ASC:
+	//	studentScore = BubleSortByAsc(studentScore);
+	//	break;
+	//case BUBLESORT_BY_DESC:
+	//	studentScore = BubleSortByDesc(studentScore);
+	//	break;
+	//default:
+	//	errCode = XXX_INVALID_PARAMETER;
+	//	e_pt->errorCode = errCode;
+	//	e_pt->errorMesage[0] = "Selected sortLogic is invalid.";
+	//	return;
+	//}
 
 	// ソート結果を画面に表示
 	//displayScore(studentScore, ALL);

@@ -19,7 +19,7 @@ enum Subject {
 /* \‘¢‘ÌéŒ¾															  */
 /* -------------------------------------------------------------------------- */
 typedef struct studentScore_list {
-	int id;
+	char id[5];
 	char name[20];
 	int tokuten[ALL];
 	int total;

@@ -28,6 +28,6 @@ enum SortLogic {
  * 引数：sortLogic...ソートロジック(列挙型変数)
  *		sortKey...ソートキー(教科、列挙型変数)
  */
-void *SortController(enum SortLogic sortLogic, enum Subject sortKey);
+void SortController(enum SortLogic sortLogic, enum Subject sortKey);
 
 #endif // _SORTCONTROLLER_H_
