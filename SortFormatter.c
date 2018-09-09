@@ -11,21 +11,21 @@
 #include<stdio.h>
 
 #include"SortFormatter.h"
-#include"StudentScore.h"
+#include"StudentGrade.h"
 #include"Error.h"
 
-studentScore *ScoreSortFormatter(studentScore *studentScore, enum Subject subject)
+GradeSortFormatter(studentGrade *studentsGrade, enum Subject sortKey)
 {
 	/* validation */
 	// 必須項目チェック
-	if (studentScore == NULL) {
+	if (studentsGrade == NULL) {
 		int errCode = XXX_NULL_PARAMETER;
-		e_pt = &errCode;
-		return;
+		e_pt->errorCode = errCode;
 	}
 
-	while (studentScore != NULL)
+	while (studentsGrade != NULL)
 	{
-		studentScore->sortKey = studentScore->tokuten[subject];
+		studentsGrade->sortKey = studentsGrade->tokuten[sortKey];
+		studentsGrade = studentsGrade->next;
 	}
 }

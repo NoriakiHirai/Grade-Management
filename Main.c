@@ -15,10 +15,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#include"StudentScore.h"
+#include"StudentGrade.h"
 #include"BubleSort.h"
 #include"SortController.h"
 #include"SortFormatter.h"
+#include"Display.h"
 #include"Error.h"
 
 /* -------------------------------------------------------------------------- */
@@ -35,6 +36,9 @@ void finalize(void);
 /* -------------------------------------------------------------------------- */
 int main(void)
 {
+	displayTitle();
+	displaySequenceEnd();
+
 	// 合計得点の高い順にソート
 	SortController(BUBLESORT_BY_ASC, ALL);
 	
@@ -45,9 +49,11 @@ int main(void)
 	//SortController(BUBLESORT_BY_DESC, SCIENCE);
 	//SortController(BUBLESORT_BY_DESC, SOCIETY);
 
-	//// 終了処理
+	// 終了処理
 	finalize();
 
+	rewind(stdin);
+	getchar();
 	exit(EXIT_SUCCESS);
 }
 

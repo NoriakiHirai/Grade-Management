@@ -9,97 +9,90 @@
 /* インクルード宣言															  */
 /* -------------------------------------------------------------------------- */
 #include<stdio.h>
+#include<string.h>
 
 #include"SortController.h"
 #include"SortFormatter.h"
+#include"GradeReader.h"
+#include"GradeWriter.h"
 #include"BubleSort.h"
-#include"StudentScore.h"
+#include"StudentGrade.h"
+#include"GradeDisplay.h"
 #include"Error.h"
 
 /* -------------------------------------------------------------------------- */
 /* プロトタイプ宣言															  */
 /* -------------------------------------------------------------------------- */
-/**
- * 成績情報読み込み
- *
- * 引数:studentScore...成績情報構造体
- */
-studentScore *readGrade(studentScore *studentScore);
 
-/**
- * 成績情報書き出し(CSV形式)
- *
- * 引数:studentScore...成績情報構造体
- */
-studentScore *writeGradeInCSV(studentScore *studentScore);
-
-/**
- * 成績情報表示
- *
- * 引数：studentScore...成績情報構造体
- */
-void displayScore(studentScore *studentScore, enum Subject subject);
 
 /* -------------------------------------------------------------------------- */
-/* 処理部																	  */
+/* SortController															  */
 /* -------------------------------------------------------------------------- */
-/* SortController */
 void SortController(enum SortLogic sortLogic, enum Subject sortKey)
 {
 	int errCode;
+	char subject[10];
+	char sortPattern[5];
+	studentGrade *studentsGrade;
 	
 	// 学籍番号と5教科分の得点を入力する
-	studentGrade = readGrade();
+	studentsGrade = readGrade();
 
-	//// ソートキーを設定する
-	//switch (sortKey)
-	//{
-	//case ENGLISH:
-	//	studentScore = ScoreSortFormatter(studentScore, ENGLISH);
-	//	break;
-	//case LANGUAGE:
-	//	studentScore = ScoreSortFormatter(studentScore, LANGUAGE);
-	//	break;
-	//case MATH:
-	//	studentScore = ScoreSortFormatter(studentScore, MATH);
-	//	break;
-	//case SCIENCE:
-	//	studentScore = ScoreSortFormatter(studentScore, SCIENCE);
-	//	break;
-	//case SOCIETY:
-	//	studentScore = ScoreSortFormatter(studentScore, SOCIETY);
-	//	break;
-	//case ALL:
-	//	studentScore = ScoreSortFormatter(studentScore, ALL);
-	//	break;
-	//default:
-	//	errCode = XXX_INVALID_PARAMETER;
-	//	e_pt->errorCode = errCode;
-	//	e_pt->errorMesage[0] = "Selected sortKey is invalid.";
-	//	return;
-	//}
+	// ソートキーおよび画面出力文字列を設定する
+	switch (sortKey)
+	{
+	case ENGLISH:
+		GradeSortFormatter(studentsGrade, ENGLISH);
+		strcpy(subject, SUBJECT[ENGLISH]);
+		break;
+	case LANGUAGE:
+		GradeSortFormatter(studentsGrade, LANGUAGE);
+		strcpy(subject, SUBJECT[LANGUAGE]);
+		break;
+	case MATH:
+		GradeSortFormatter(studentsGrade, MATH);
+		strcpy(subject, SUBJECT[MATH]);
+		break;
+	case SCIENCE:
+		GradeSortFormatter(studentsGrade, SCIENCE);
+		strcpy(subject, SUBJECT[SCIENCE]);
+		break;
+	case SOCIETY:
+		GradeSortFormatter(studentsGrade, SOCIETY);
+		strcpy(subject, SUBJECT[SOCIETY]);
+		break;
+	case ALL:
+		GradeSortFormatter(studentsGrade, ALL);
+		strcpy(subject, SUBJECT[ALL]);
+		break;
+	default:
+		errCode = XXX_INVALID_PARAMETER;
+		e_pt->errorCode = errCode;
+		e_pt->errorMesage[0] = "Selected sortKey is invalid.";
+		return;
+	}
 
-	//// ソート実行
-	//switch (sortLogic)
-	//{
-	//case BUBLESORT_BY_ASC:
-	//	studentScore = BubleSortByAsc(studentScore);
-	//	break;
-	//case BUBLESORT_BY_DESC:
-	//	studentScore = BubleSortByDesc(studentScore);
-	//	break;
-	//default:
-	//	errCode = XXX_INVALID_PARAMETER;
-	//	e_pt->errorCode = errCode;
-	//	e_pt->errorMesage[0] = "Selected sortLogic is invalid.";
-	//	return;
-	//}
+	// ソート実行
+	switch (sortLogic)
+	{
+	case BUBLESORT_BY_ASC:
+		//studentsGrade = BubleSortByAsc(studentsGrade);
+		strcpy(sortPattern, SORT_PATTERN[0]);
+		break;
+	case BUBLESORT_BY_DESC:
+		//studentsGrade = BubleSortByDesc(studentsGrade);
+		strcpy(sortPattern, SORT_PATTERN[1]);
+		break;
+	default:
+		errCode = XXX_INVALID_PARAMETER;
+		e_pt->errorCode = errCode;
+		e_pt->errorMesage[0] = "Selected sortLogic is invalid.";
+		return;
+	}
 
+	// ソート結果をCSV形式で出力
+	writeGradeInCSVFormat(studentsGrade, subject, sortPattern);
+	
 	// ソート結果を画面に表示
-	//displayScore(studentScore, ALL);
-
-	// ソート結果をCSV形式で表示
-
-	// ソート結果をCSV形式でファイルに出力（コントローラ
-
+	//displayGrade(studentsGrade, subject, sortPattern);
 }

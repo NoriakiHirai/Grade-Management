@@ -10,17 +10,18 @@
 /* -------------------------------------------------------------------------- */
 /* インクルード宣言															  */
 /* -------------------------------------------------------------------------- */
-#include"StudentScore.h"
+#include"StudentGrade.h"
 
 /* -------------------------------------------------------------------------- */
 /* プロトタイプ宣言															  */
 /* -------------------------------------------------------------------------- */
 /**
  * ソートフォーマッタ
+ *   成績構造体に指定したソートキーを設定し、構造体配列の各要素をリスト形式につなぐ
  *
- * 引数：studentScore...成績構造体
+ * 引数：studentGrade...成績構造体
  *		sortKey...ソートキー(教科、列挙型変数)
  */
-studentScore *ScoreSortFormatter(studentScore *studentScore, enum Subject sortKey);
+GradeSortFormatter(studentGrade *studentGrade, enum Subject sortKey);
 
 #endif // _SORTFORMATTER_H_

@@ -13,21 +13,26 @@
 /* -------------------------------------------------------------------------- */
 /* インクルード宣言															  */
 /* -------------------------------------------------------------------------- */
-#include"StudentScore.h"
+#include"StudentGrade.h"
 
 /* -------------------------------------------------------------------------- */
 /* プロトタイプ宣言															  */
 /* -------------------------------------------------------------------------- */
-/**
- * 成績情報表示
- *	名前、各教科の得点、合計点を画面に表示する
- *
- *	@param *studentScore[] 成績情報を格納した構造遺体配列のポインタ
- */
-void displayGrade(studentScore *studentScore[]);
+/* 画面表示汎用部品 */
+void displayTitle();
+void displaySeparatorLine();
+void displaySequenceEnd();
+void displayNewLine();
 
 /* 成績情報入力画面表示 */
 void displayInputStart();
-void displayInput();
+void displayInputEnd();
+
+/* ソート結果表示 */
+void displayResultTitle();
+void displaySubject(char *adjSubject);
+void displaySortPattern(char *sortPattern);
+void displaySortResult(studentGrade *studentsGrade);
+void displaySortResultEnd();
 
 #endif // !DISPLAY_H_

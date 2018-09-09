@@ -14,7 +14,7 @@
 #include<string.h>
 #include<stdlib.h>
 
-#include"StudentScore.h"
+#include"StudentGrade.h"
 #include"GradeReader.h"
 #include"Display.h"
 #include"Config.h"
@@ -22,105 +22,99 @@
 /* -------------------------------------------------------------------------- */
 /* GradeReader定義															  */
 /* -------------------------------------------------------------------------- */
-void readGrade(studentScore *sScore[])
+studentGrade *readGrade()
 {
-	/* validation */
-	if (sScore == NULL) {
-		return;
-	}
-
 	FILE *gf_pt;
-	studentScore *g_pt;
-	int i = 0, j;
+	studentGrade studentsGrade[40], *g_pt;
+	int i = 0;
 
-	// 出力先フルパス生成
-	char pathname[PATHNAME_SIZE];  // ファイルパス
-	memset(pathname, '\0', PATHNAME_SIZE);	// 変数初期化
-	getcwd(pathname, PATHNAME_SIZE);	// カレントディレクトリ取得
-	strcat(pathname, STUDENT_MASTER);
-	fprintf(stdout, "出力先ファイルパス:%s\n", pathname);
+	// 出力先ファイルオープン
+	if ((gf_pt = fopen(GREDE_SUMMARY, "w+")) == NULL)
+	{
+		printf("FILE OPEN ERROR\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	// 成績情報入力スタート画面表示
+	displayInputStart();
 
-	// ファイルオープン
-	//if((gf_pt = fopen()))
-	//// 成績情報入力スタート画面表示
-	//void displayInputStart();
+	// 成績情報入力内容取得
+	// EOFが入力されるまで入力を繰り返す。
+	g_pt = studentsGrade;
+	while (1)
+	{
+		printf("学籍番号:");
+		scanf("%s", g_pt->id);
+		if (!(strcmp(g_pt->id, END_OF_INPUT))) break;
+		
+		printf("各教科の得点:");
+		scanf("%d %d %d %d %d",
+			&(g_pt->tokuten[ENGLISH]),
+			&(g_pt->tokuten[LANGUAGE]),
+			&(g_pt->tokuten[MATH]),
+			&(g_pt->tokuten[SCIENCE]),
+			&(g_pt->tokuten[SOCIETY]));
+		
+		fprintf(gf_pt, "%-5s %3d %3d %3d %3d %3d",
+			g_pt->id,
+			g_pt->tokuten[ENGLISH],
+			g_pt->tokuten[LANGUAGE],
+			g_pt->tokuten[MATH],
+			g_pt->tokuten[SCIENCE],
+			g_pt->tokuten[SOCIETY]);
+		
+		// 成績情報入力区切り行表示
+		displaySeparatorLine();
+	}
+	
+	// データを構造体に格納
+	fseek(gf_pt, 0L, SEEK_SET);
+	rewind(gf_pt);
+	for (i = 0; fscanf(gf_pt, "%5s %3d %3d %3d %3d %3d",
+		studentsGrade[i].id,
+		&(studentsGrade[i].tokuten[ENGLISH]),
+		&(studentsGrade[i].tokuten[LANGUAGE]),
+		&(studentsGrade[i].tokuten[MATH]),
+		&(studentsGrade[i].tokuten[SCIENCE]),
+		&(studentsGrade[i].tokuten[SOCIETY])) != EOF; i++) {
+		// 合計点を算出し、構造体に格納
+		studentsGrade[i].tokuten[ALL] = 
+			studentsGrade[i].tokuten[ENGLISH]
+			+ studentsGrade[i].tokuten[LANGUAGE]
+			+ studentsGrade[i].tokuten[MATH]
+			+ studentsGrade[i].tokuten[SCIENCE]
+			+ studentsGrade[i].tokuten[SOCIETY];
 
-	//// 成績情報入力内容取得
-	//// ^Z(Ctrl+Z)が入力されるまで入力を繰り返す。
-	//g_pt = sScore[0];
-	//while (1)
-	//{
-	//	void displayInput();
-	//	scanf("%s %d %d %d %d %d", g_pt->id,
-	//		&(g_pt->tokuten[ENGLISH]),
-	//		&(g_pt->tokuten[MATH]),
-	//		&(g_pt->tokuten[LANGUAGE]),
-	//		&(g_pt->tokuten[SCIENCE]),
-	//		&(g_pt->tokuten[SOCIETY]));
-	//	fprintf(gf_pt, "%-5s %3d %3d %3d %3d %3d",
-	//		g_pt->id,
-	//		g_pt->tokuten[ENGLISH],
-	//		g_pt->tokuten[MATH],
-	//		g_pt->tokuten[LANGUAGE],
-	//		g_pt->tokuten[SCIENCE],
-	//		g_pt->tokuten[SOCIETY]);
-	//	// for debug
-	//	if (i == 3) {
-	//		break;
-	//	}
-	//	i++;
-	//}
-	//// データを構造体に格納
-	//fseek(gf_pt, 0L, SEEK_SET);
-	//rewind(gf_pt);
-	//for (i = 0; fscanf(gf_pt, "%5s %3d %3d %3d %3d %3d",
-	//	sScore[i]->id,
-	//	&(sScore[i]->tokuten[ENGLISH]),
-	//	&(sScore[i]->tokuten[MATH]),
-	//	&(sScore[i]->tokuten[LANGUAGE]),
-	//	&(sScore[i]->tokuten[SCIENCE]),
-	//	&(sScore[i]->tokuten[SOCIETY])) != EOF; i++);
+		// 構造体配列をリスト形式に変換
+		if (i == 0) {
+				
+				studentsGrade[i].next = NULL;
+		}
+		else {
+			studentsGrade[i - 1].next = &studentsGrade[i];
+			studentsGrade[i].next = NULL;
+		}
+	}
+	// 
+	// 成績情報入力終了表示
+	displayInputEnd();
+	// シーケンスの区切りを画面に出力する
+	displaySequenceEnd();
 
-	//// for debug
+	return &studentsGrade[0];
+
+	// for debug
 	//printf("\nデータを表示します\n");
 	//rewind(gf_pt);
 	//for (j = 0; j < i; j++)
 	//{
-	//	printf("ID：%-5s 英語：%3d 数学：%3d 国語：%3d 理科：%3d 社会：%3d\n",
+	//	printf("ID：%-5s 英語：%3d 国語：%3d 数学：%3d 理科：%3d 社会：%3d\n",
 	//		g_pt->id,
 	//		g_pt->tokuten[ENGLISH],
-	//		g_pt->tokuten[MATH],
 	//		g_pt->tokuten[LANGUAGE],
+	//		g_pt->tokuten[MATH],
 	//		g_pt->tokuten[SCIENCE],
 	//		g_pt->tokuten[SOCIETY]);
 	//	g_pt++;
-	//}
-
-	//printf("データを入力してください(終了はf n)\n");
-	//rewind(stdin);
-	//g_pt = gakusei;
-
-	//// データを構造体に入力
-	//fseek(gf_pt, 0L, SEEK_SET);
-	//rewind(gf_pt);
-	//for (i = 0; fscanf(gf_pt, "%10s %3d", gakusei[i].name,
-	//	&(gakusei[i].ten)) != EOF; i++);
-
-	//// 格納したデータの処理
-	//printf("\nデータを表示します\n");
-	//rewind(gf_pt);
-	//for (j = 0; j < i; j++)
-	//{
-	//	w_goukei += g_pt->ten;
-	//	printf("%-10s %3d\n", g_pt->name, g_pt->ten);
-	//	g_pt++;
-	//}
-	//printf("	%4d\n", w_goukei);
-
-	//memset(gakusei, 0, sizeof(gakusei));
-	//if (fclose(gf_pt) == EOF)
-	//{
-	//	printf("FILE CLOSE ERROR\n");
-	//	exit(EXIT_FAILURE);
 	//}
 }

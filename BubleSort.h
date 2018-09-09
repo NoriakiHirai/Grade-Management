@@ -11,7 +11,7 @@
 /* -------------------------------------------------------------------------- */
 /* インクルード宣言															  */
 /* -------------------------------------------------------------------------- */
-#include"StudentScore.h"
+#include"StudentGrade.h"
 #include"SortController.h"
 
 /* -------------------------------------------------------------------------- */
@@ -20,15 +20,15 @@
 /**
  * 昇順バブルソート
  *
- * 引数：studentScore...成績構造体
+ * 引数：studentGrade...成績構造体
  */
-studentScore *BubleSortByAsc(studentScore *studentScore);
+studentGrade *BubleSortByAsc(studentGrade *studentGrade);
 
 /**
  * 降順バブルソート
  *
- * 引数：studentScore...成績構造体
+ * 引数：studentGrade...成績構造体
  */
-studentScore *BubleSortByDesc(studentScore *studentScore);
+studentGrade *BubleSortByDesc(studentGrade *studentGrade);
 
 #endif // _BUBLESORT_H_

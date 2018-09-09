@@ -1,20 +1,28 @@
 //* -------------------------------------------------------------------------- */
-/* File:Config.h															  */
+/* File:GradeDisplay.h														  */
 /* Overview:                                                                  */
-/*	各種設定情報を定義する。													  */
+/*	成績情報を画面出力する関数宣言を定義する。                                       */
 /*                                                                            */
 /*                                                Author : HAL Tokyo - Hirai  */
 /*                                                Date   : 2018.09.08         */
 /* -------------------------------------------------------------------------- */
 
-#ifndef CONFIG_H_
-#define CONFIG_H_
+#ifndef GREADEDISPLAY_H_
+#define GREADEDISPLAY_H_
 
 /* -------------------------------------------------------------------------- */
-/* グローバル変数宣言															  */
+/* インクルード宣言															  */
 /* -------------------------------------------------------------------------- */
-static char STUDENT_MASTER[] = { "Student.csv" };
-static char GREDE_SUMMARY[] = { "GradeSummary.csv" };
-static char END_OF_INPUT[5] = { "EOF" };
+#include"StudentGrade.h"
 
-#endif // !CONFIG_H_
+/* -------------------------------------------------------------------------- */
+/* プロトタイプ宣言															  */
+/* -------------------------------------------------------------------------- */
+/**
+* 成績画面表示
+*	指定された科目、並び順に応じて、成績画面表示を行う。
+*
+*/
+void displayGrade(studentGrade *studentsGrade, char *subject, char *sortPattern);
+
+#endif // !GREADEDISPLAY_H_

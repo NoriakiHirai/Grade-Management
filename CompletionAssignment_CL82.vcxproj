@@ -118,6 +118,7 @@
   <ItemGroup>
     <ClCompile Include="BubleSort.c" />
     <ClCompile Include="Display.c" />
+    <ClCompile Include="GradeDisplay.c" />
     <ClCompile Include="GradeReader.c" />
     <ClCompile Include="GradeWriter.c" />
     <ClCompile Include="Main.c" />
@@ -129,11 +130,12 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="Display.h" />
+    <ClInclude Include="GradeDisplay.h" />
     <ClInclude Include="GradeReader.h" />
     <ClInclude Include="GradeWriter.h" />
     <ClInclude Include="SortController.h" />
     <ClInclude Include="SortFormatter.h" />
-    <ClInclude Include="StudentScore.h" />
+    <ClInclude Include="StudentGrade.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -13,7 +13,14 @@
 /* -------------------------------------------------------------------------- */
 /* インクルード宣言															  */
 /* -------------------------------------------------------------------------- */
-#include"StudentScore.h"
+#include"StudentGrade.h"
+
+/* -------------------------------------------------------------------------- */
+/* グローバル変数宣言	   														  */
+/* -------------------------------------------------------------------------- */
+static const char *BASE_FILE_NAME = "GradeSummaryOf";
+static const char *ADD_FILE_NAME_SORT_PATTERN = { "SortedIn" };
+
 
 /* -------------------------------------------------------------------------- */
 /* プロトタイプ宣言															  */
@@ -22,9 +29,10 @@
  * 成績書き込み
  *	名前、各教科の得点、合計点をCSV形式でファイルに出力する
  *
- *	@param gradeSummaryFilePath[256] 成績情報の出力先ファイルパス
- *	@param *studentScore[] 成績情報を格納した構造遺体配列のポインタ
+ *	@param *studentGrade 成績情報を格納した構造遺体のポインタ
+ *	@param subject 教科
+ *  @param sortPattern ソートロジック(昇順 or 降順)
  */
-void gradeRead(char gradeSummaryFilePath[256], studentScore *studentScore[]);
+void writeGradeInCSVFormat(studentGrade *studentsGrade, const char *subject, const char *sortPattern);
 
 #endif // !GREADEWRITER_H_
