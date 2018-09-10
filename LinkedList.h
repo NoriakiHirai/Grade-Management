@@ -1,14 +1,14 @@
 //* -------------------------------------------------------------------------- */
-/* File:GradeWriter.h														  */
+/* File:LinkedList.h														  */
 /* Overview:                                                                  */
-/*	成績情報を出力する関数宣言を定義する。                                           */
+/*	単方向リストを実現するための関数宣言を定義する。                                  */
 /*                                                                            */
 /*                                                Author : HAL Tokyo - Hirai  */
-/*                                                Date   : 2018.09.08         */
+/*                                                Date   : 2018.09.10         */
 /* -------------------------------------------------------------------------- */
 
-#ifndef GREADEWRITER_H_
-#define GREADEWRITER_H_
+#ifndef LINKEDlIST_H_
+#define LINKEDlIST_H_
 
 /* -------------------------------------------------------------------------- */
 /* インクルード宣言															  */
@@ -18,14 +18,14 @@
 /* -------------------------------------------------------------------------- */
 /* プロトタイプ宣言															  */
 /* -------------------------------------------------------------------------- */
-/**
- * 成績書き込み
- *	名前、各教科の得点、合計点をCSV形式でファイルに出力する
- *
- *	@param *studentGrade 成績情報を格納した構造遺体のポインタ
- *	@param subject 教科
- *  @param sortPattern ソートロジック(昇順 or 降順)
- */
-void writeGradeInCSVFormat(studentGrade *studentsGrade, const char *subject, const char *sortPattern);
+studentGrade *getRightEnd(const studentGrade *crt);		// 右端(最後)の要素のアドレスを返す
 
-#endif // !GREADEWRITER_H_
+void fetchList(const studentGrade *crt);				// リストの全内容を表示
+int countListElement(const studentGrade *crt);			// リスト内の要素数を返す
+
+void removeRightElement(studentGrade *crt);				// 右の要素を削除する
+
+studentGrade *makeElement(studentGrade *left);		// 要素を追加
+studentGrade *appendElement(studentGrade *crt);		// 右端に要素追加
+
+#endif // !LINKEDlIST_H_

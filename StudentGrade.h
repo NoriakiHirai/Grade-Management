@@ -39,7 +39,7 @@ typedef struct studentGrade_list {
 	int tokuten[MAX_LENGTH];
 	int total;
 	int sortKey;
-	struct studentGrade_list * next;
+	struct studentGrade_list *previous, *next;
 } studentGrade;
 
 #endif // _STUDENTGRADE_H_

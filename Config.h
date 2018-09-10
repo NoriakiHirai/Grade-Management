@@ -13,8 +13,15 @@
 /* -------------------------------------------------------------------------- */
 /* グローバル変数宣言															  */
 /* -------------------------------------------------------------------------- */
+// インプットファイル名
 static char STUDENT_MASTER[] = { "Student.csv" };
-static char GREDE_SUMMARY[] = { "GradeSummary.csv" };
+
+// 定数
 static char END_OF_INPUT[5] = { "EOF" };
+
+// アウトプットファイル名
+static char BASE_FILE_NAME[15] = "GradeSummaryOf";
+static char SORT_ADJ[3] = "By";
+static char EXTENSION_CSV[5] = ".csv";
 
 #endif // !CONFIG_H_

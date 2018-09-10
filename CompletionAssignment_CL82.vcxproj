@@ -121,6 +121,7 @@
     <ClCompile Include="GradeDisplay.c" />
     <ClCompile Include="GradeReader.c" />
     <ClCompile Include="GradeWriter.c" />
+    <ClCompile Include="LinkedList.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="SortFormatter.c" />
     <ClCompile Include="SortController.c" />
@@ -133,6 +134,7 @@
     <ClInclude Include="GradeDisplay.h" />
     <ClInclude Include="GradeReader.h" />
     <ClInclude Include="GradeWriter.h" />
+    <ClInclude Include="LinkedList.h" />
     <ClInclude Include="SortController.h" />
     <ClInclude Include="SortFormatter.h" />
     <ClInclude Include="StudentGrade.h" />

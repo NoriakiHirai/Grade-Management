@@ -38,11 +38,8 @@ void writeGradeInCSVFormat(studentGrade *studentsGrade, const char *subject, con
 	}
 
 	// ファイル名の生成
-	strcpy(outputFile, BASE_FILE_NAME);
-	strcpy(outputFile, subject);
-	strcpy(outputFile, ADD_FILE_NAME_SORT_PATTERN);
-	strcpy(outputFile, sortPattern);
-
+	sprintf(outputFile, "%s%s%s%s%s", BASE_FILE_NAME, subject, SORT_ADJ, sortPattern, EXTENSION_CSV);
+	
 	// ファイルオープン
 	if ((gf_pt = fopen(outputFile, "w+")) == NULL)
 	{
@@ -53,7 +50,7 @@ void writeGradeInCSVFormat(studentGrade *studentsGrade, const char *subject, con
 	// ファイルポインタにデータの読み込み
 	while (studentsGrade != NULL)
 	{
-		fprintf(gf_pt, "\"%s\",%d,%d,%d,%d,%d,%d",
+		fprintf(gf_pt, "\"%s\",%d,%d,%d,%d,%d,%d\n",
 			studentsGrade->name,
 			studentsGrade->tokuten[ENGLISH],
 			studentsGrade->tokuten[LANGUAGE],
@@ -62,6 +59,7 @@ void writeGradeInCSVFormat(studentGrade *studentsGrade, const char *subject, con
 			studentsGrade->tokuten[SOCIETY],
 			studentsGrade->tokuten[ALL]
 		);
+		studentsGrade = studentsGrade->next;
 	}
 
 	// ファイルクローズ
