@@ -121,21 +121,33 @@ void displaySortResult(studentGrade *studentsGrade)
 	}
 
 	do {
-		printf("%2d. %s 英語：%3d 国語：%3d 数学：%3d 理科：%3d 社会：%3d\n",
+		printf("%2d. %s 英語：%3d 国語：%3d 数学：%3d 理科：%3d 社会：%3d 合計：%3d\n",
 			displayNum,
 			studentsGrade->id,
 			studentsGrade->tokuten[ENGLISH],
 			studentsGrade->tokuten[LANGUAGE],
 			studentsGrade->tokuten[MATH],
 			studentsGrade->tokuten[SCIENCE],
-			studentsGrade->tokuten[SOCIETY]);
+			studentsGrade->tokuten[SOCIETY],
+			studentsGrade->tokuten[ALL]);
 		studentsGrade = studentsGrade->next;
 		displayNum++;
 	} while (studentsGrade != NULL);
 }
 
+/* -------------------------------------------------------------------------- */
+/* displaySortResultEnd														  */
+/* -------------------------------------------------------------------------- */
 void displaySortResultEnd()
 {
 	printf("\n");
-	printf("ソート結果表示を終了します。\n");
+	printf("ソート結果の表示を終了します。\n");
+}
+
+/* -------------------------------------------------------------------------- */
+/* displayEndMsg															  */
+/* -------------------------------------------------------------------------- */
+void displayEndMsg()
+{
+	printf("成績管理アプリケーションを終了します。(Enterで終了)");
 }

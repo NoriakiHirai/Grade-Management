@@ -16,6 +16,7 @@
 #include<stdlib.h>
 
 #include"StudentGrade.h"
+#include"GradeReader.h"
 #include"BubleSort.h"
 #include"SortController.h"
 #include"SortFormatter.h"
@@ -39,15 +40,20 @@ int main(void)
 	displayTitle();
 	displaySequenceEnd();
 
+	studentGrade *studentsGrade;
+
+	// 学籍番号と5教科分の得点を入力する
+	studentsGrade = readGrade();
+
 	// 合計得点の高い順にソート
-	SortController(BUBLESORT_BY_ASC, ALL);
+	SortController(studentsGrade, BUBLESORT_BY_ASC, ALL);
 	
 	//// 各教科ごとの得点の低い順にソート
-	//SortController(BUBLESORT_BY_DESC, ENGLISH);
-	//SortController(BUBLESORT_BY_DESC, MATH);
-	//SortController(BUBLESORT_BY_DESC, LANGUAGE);
-	//SortController(BUBLESORT_BY_DESC, SCIENCE);
-	//SortController(BUBLESORT_BY_DESC, SOCIETY);
+	SortController(studentsGrade, BUBLESORT_BY_DESC, ENGLISH);
+	//SortController(studentsGrade, BUBLESORT_BY_DESC, MATH);
+	//SortController(studentsGrade, BUBLESORT_BY_DESC, LANGUAGE);
+	//SortController(studentsGrade, BUBLESORT_BY_DESC, SCIENCE);
+	//SortController(studentsGrade, BUBLESORT_BY_DESC, SOCIETY);
 
 	// 終了処理
 	finalize();
@@ -60,6 +66,9 @@ int main(void)
 void finalize()
 {
 	// エラー構造体を確認し、メッセージを出力する
+
+	// 終了メッセージ表示
+	displayEndMsg();
 
 	return;
 }

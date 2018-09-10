@@ -28,16 +28,12 @@
 /* -------------------------------------------------------------------------- */
 /* SortController															  */
 /* -------------------------------------------------------------------------- */
-void SortController(enum SortLogic sortLogic, enum Subject sortKey)
+void SortController(studentGrade *studentsGrade, enum SortLogic sortLogic, enum Subject sortKey)
 {
 	int errCode;
 	char subject[10];
 	char sortPattern[5];
-	studentGrade *studentsGrade;
 	
-	// 学籍番号と5教科分の得点を入力する
-	studentsGrade = readGrade();
-
 	// ソートキーおよび画面出力文字列を設定する
 	switch (sortKey)
 	{
@@ -76,11 +72,11 @@ void SortController(enum SortLogic sortLogic, enum Subject sortKey)
 	switch (sortLogic)
 	{
 	case BUBLESORT_BY_ASC:
-		//studentsGrade = BubleSortByAsc(studentsGrade);
+		studentsGrade = BubleSortByAsc(studentsGrade);
 		strcpy(sortPattern, SORT_PATTERN[0]);
 		break;
 	case BUBLESORT_BY_DESC:
-		//studentsGrade = BubleSortByDesc(studentsGrade);
+		studentsGrade = BubleSortByDesc(studentsGrade);
 		strcpy(sortPattern, SORT_PATTERN[1]);
 		break;
 	default:
@@ -94,5 +90,5 @@ void SortController(enum SortLogic sortLogic, enum Subject sortKey)
 	writeGradeInCSVFormat(studentsGrade, subject, sortPattern);
 	
 	// ソート結果を画面に表示
-	//displayGrade(studentsGrade, subject, sortPattern);
+	displayGrade(studentsGrade, subject, sortPattern);
 }

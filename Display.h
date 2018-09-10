@@ -23,6 +23,7 @@ void displayTitle();
 void displaySeparatorLine();
 void displaySequenceEnd();
 void displayNewLine();
+void displayEndMsg();
 
 /* ¬Ñî•ñ“ü—Í‰æ–Ê•\¦ */
 void displayInputStart();

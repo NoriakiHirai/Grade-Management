@@ -17,7 +17,6 @@
 /* -------------------------------------------------------------------------- */
 /* ˆ—•”																	  */
 /* -------------------------------------------------------------------------- */
-/* */
 studentGrade *BubleSortByAsc(studentGrade *studentGrade)
 {
 	int dirty;
@@ -33,7 +32,9 @@ studentGrade *BubleSortByAsc(studentGrade *studentGrade)
 		if (studentGrade->sortKey > studentGrade->next->sortKey) {
 			struct studentGrade_list *tmp = studentGrade;
 			studentGrade = studentGrade->next;
+			studentGrade->previous = tmp->previous;
 			tmp->next = studentGrade->next;
+			tmp->previous = studentGrade;
 			studentGrade->next = tmp;
 			dirty = 1;
 		}
@@ -46,8 +47,11 @@ studentGrade *BubleSortByAsc(studentGrade *studentGrade)
 			if (crt->next->sortKey > crt->next->next->sortKey) {
 				struct studentGrade_list* tmp = crt->next;
 				crt->next = crt->next->next;
+				crt->previous = crt->next->previous;
 				tmp->next = crt->next->next;
+				tmp->previous = crt;
 				crt->next->next = tmp;
+				//crt->next->previous = crt;
 				dirty = 1;
 			}
 			crt = crt->next;
@@ -71,7 +75,9 @@ studentGrade *BubleSortByDesc(studentGrade *studentGrade)
 		if (studentGrade->sortKey < studentGrade->next->sortKey) {
 			struct studentGrade_list *tmp = studentGrade;
 			studentGrade = studentGrade->next;
+			studentGrade->previous = tmp->previous;
 			tmp->next = studentGrade->next;
+			tmp->previous = studentGrade;
 			studentGrade->next = tmp;
 			dirty = 1;
 		}
@@ -84,7 +90,9 @@ studentGrade *BubleSortByDesc(studentGrade *studentGrade)
 			if (crt->next->sortKey < crt->next->next->sortKey) {
 				struct studentGrade_list* tmp = crt->next;
 				crt->next = crt->next->next;
+				crt->previous = crt->next->previous;
 				tmp->next = crt->next->next;
+				tmp->previous = crt;
 				crt->next->next = tmp;
 				dirty = 1;
 			}
